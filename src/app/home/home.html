@@ -1,127 +1,49 @@
-<nav class="navbar navbar-expand-lg py-1 px-10 border-bottom bg-dark" style="
-    padding: 0 30px;
-    border-bottom: 5px solid #efefef !important;
-">
-    <div class="container-fluid">
-        <a class="navbar-brand fw-light text-white" href="#" style="font-size: 14px;">ProjectGeo</a>
-        <ul class="navbar-nav" style="font-size: 14px !important;">
-            <li class="nav-item">
-                <a class="nav-link active text-white" aria-current="page" href="/projects">Projects</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="#">Employees</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="#">Tasks</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Settings
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item text-white" href="#">Action</a></li>
-                    <li><a class="dropdown-item text-white" href="#">Another action</a></li>
-                    <li><a class="dropdown-item text-white" href="#">Something else here</a></li>
-                </ul>
-            </li>
-        </ul>
-        <div class="d-flex justify-content-end align-items-center gap-2">
-            <button type="button" class="btn btn-sm btn-light position-relative">
-                <i class="fa-solid fa-user"></i>
-                <span
-                    class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
-                    <span class="visually-hidden">New alerts</span>
-                </span>
-            </button>
-            <button type="button" class="btn btn-sm btn-light position-relative">
-                <i class="fa-solid fa-bell"></i>
-                <span
-                    class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
-                    <span class="visually-hidden">New alerts</span>
-                </span>
-            </button>
-            <button type="button" class="btn btn-sm btn-light position-relative">
-                <i class="fa-solid fa-message"></i>
-            </button>
-            <button type="button" class="btn btn-sm btn-light position-relative" (click)="logout()">
-                <i class="fa-solid fa-gear"></i>
-            </button>
-        </div>
-
-    </div>
-</nav>
-
-<div class="container-fluid py-2 border-bottom-1 border-gray-200 bg-light" style="
-    padding: 0 40px;
-    border-bottom: 1px solid #efefef !important;
-">
-    <div class="row bg-white ">
-        <div class="col-md-3 border border-gray-200 p-1 custom-border">
-            <span class="text-muted custom-text-muted">Date</span>
-            <div class="row px-2" style="margin: 1px -7px;">
-                <div class="col-2 p-1 py-2 border border-gray-200 d-flex justify-content-center align-items-center custom-border bg-light"
-                    style="border-top-left-radius: 5px;border-bottom-left-radius: 5px;">
-                    <div class="">
+<div class="py-1 px-4 active-nv-link btmShadowBorder">
+    <div class="row align-items-center justify-content-center">
+        <div class="col-md-3  ">
+            <!-- <span class="text-muted custom-text-muted">Date</span> -->
+            <div class="row align-items-center">
+                <div class="col-2 p-2">
+                    <div class="inputBoxStyle">
                         <i class="fa-solid fa-arrow-left"></i>
                     </div>
                 </div>
-                <div
-                    class="col-8 p-1 border border-gray-200 d-flex justify-content-center align-items-center custom-border bg-light">
-                    <p class="m-0 text-center">DatePicker</p>
+                <div class="col-8 p-0">
+                    <div class="inputBoxStyle d-flex align-items-center justify-content-center gap-2">
+                        <i class="fa-solid fa-calendar"></i>
+                        <p class="m-0 text-center">
+                           DatePicker
+                        </p>
+                    </div>
                 </div>
-                <div class="col-2 p-1 py-2 border border-gray-200 d-flex justify-content-center align-items-center custom-border bg-light"
-                    style="border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;">
-                    <div class="">
+                <div class="col-2 p-2">
+                    <div class="inputBoxStyle">
                         <i class="fa-solid fa-arrow-right"></i>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-3 border border-gray-200 p-1 custom-border">
-            <span class="text-muted custom-text-muted">State</span>
-            <select class="form-select form-select-sm border-0 bg-light" aria-label="Small select example"
-            style="border: 1px solid #e3e3e3 !important;
-            font-size: 16px;
-            margin: 4px 1px;"
-            >
-                <option selected>Arunachal Pradesh</option> 
+        <div class="col-md-3">
+            <select class="form-select form-select-sm" aria-label="Small select example">
+                <option selected>Arunachal Pradesh</option>
             </select>
         </div>
-        <div class="col-md-3 border border-gray-200 p-1 custom-border" style="border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;">
-            <span class="text-muted custom-text-muted">District</span>
-            <select class="form-select form-select-sm border-0 bg-light" 
-                    [(ngModel)]="selectedDistrict" 
-                    (ngModelChange)="onDistrictChange()"
-                    aria-label="Select District"
-                    
-                    style="border: 1px solid #e3e3e3 !important;
-            font-size: 16px;
-            margin: 4px 1px;"
-                    >
+        <div class="col-md-3">
+            <select class="form-select form-select-sm" [(ngModel)]="selectedDistrict"
+                (ngModelChange)="onDistrictChange()" aria-label="Select District">
                 <option value="">Select District</option>
                 <option *ngFor="let district of districts()" [value]="district">{{ district }}</option>
             </select>
         </div>
-        <div class="col-md-3 border border-gray-200 p-1 custom-border">
-            <span class="text-muted custom-text-muted">Block</span>
-            <select class="form-select form-select-sm border-0 bg-light" 
-                    [(ngModel)]="selectedMouza" 
-                    (ngModelChange)="onMouzaChange()"
-                    [disabled]="!selectedDistrict || mouzas().length === 0"
-                    aria-label="Select Block"
-                    style="border: 1px solid #e3e3e3 !important;
-            font-size: 16px;
-            margin: 4px 1px;"
-                    >
+        <div class="col-md-3  ">
+            <select class="form-select form-select-sm" [(ngModel)]="selectedMouza" (ngModelChange)="onMouzaChange()"
+                [disabled]="!selectedDistrict || mouzas().length === 0" aria-label="Select Block">
                 <option value="">Select Block</option>
                 <option *ngFor="let mouza of mouzas()" [value]="mouza">{{ mouza }}</option>
             </select>
         </div>
-      
-        <!-- <div class="col-md-1 border border-gray-200 p-1 custom-border" style="border-top-right-radius: 5px;
+
+        <!-- <div class="col-md-1  " style="border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;">
             <button class="btn btn-sm btn-light border-0 w-100 font-weight-bold">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -133,22 +55,22 @@
 <div class="container-fluid py-0 px-0">
     <div class="container-fluid">
         <div class="row p-0">
-            <div class="col-md-3 px-3 py-2 bg-light">
-                <div *ngIf="!selectedProject">
+            <div class="col-md-3 px-3 py-3 bg-navbar">
+                <div>
                     <div class="d-flex align-items-center justify-content-between mb-3">
-                        <h6 class="text-uppercase text-muted mb-0">Active Projects</h6>
-                        <span class="badge bg-dark-subtle text-dark-emphasis">{{ filteredProjects.length }}</span>
+                        <h6 class="text-uppercase text-light-Blue mb-0">Active Projects</h6>
+                        <span class="badge active-nv-link text-light-Blue">{{ filteredProjects.length }}</span>
                     </div>
                     <div class="input-group input-group-sm mb-3 search-control">
-                        <span class="input-group-text border-0 bg-body-secondary text-muted">
+                        <span class="input-group-text border-0 input-activeBox text-light-Blue">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </span>
-                        <input type="search" class="form-control border-0"
+                        <input type="search" class="form-control border-0 active-nv-link text-light-Blue p-2"
                             placeholder="Search projects, addresses, contacts..." [(ngModel)]="searchTerm" />
                     </div>
                 </div>
                 <div class="project-sidebar d-flex flex-column" [class.project-sidebar-hight-adjust]="selectedProject">
-                    <div *ngIf="!selectedProject; else projectDetails" class="d-flex flex-column flex-grow-1">
+                    <div class="d-flex flex-column flex-grow-1">
 
 
                         <div class="project-list-scroll flex-grow-1">
@@ -159,142 +81,57 @@
                                         <div class="d-flex justify-content-between align-items-start">
                                             <div class="flex-grow-1">
                                                 <div class="d-flex align-items-center gap-2 mb-1">
-                                                    <span class="type-icon-badge" 
-                                                          [style.background-color]="getTypeColor(project.type)"
-                                                          [title]="getTypeLabel(project.type)">
-                                                        {{ getTypeIcon(project.type) }}
+                                                    <span class="type-icon-badge"
+                                                        [style.background-color]="getTypeColor(project.schemeType)"
+                                                        [title]="getTypeLabel(project.schemeType)">
+                                                        {{ getTypeIcon(project.schemeType) }}
                                                     </span>
-                                                    <h5 class="card-title mb-0 text-dark">{{ project.name }}</h5>
+                                                    <h5 class="card-title mb-0 text-dark">{{ project.activityName }}
+                                                    </h5>
                                                 </div>
                                                 <p class="text-muted mb-2">
-                                                    <i class="fa-regular fa-calendar me-2"></i>{{ project.startDate }}
+                                                    <i class="fa-regular fa-building me-2"></i>{{ project.projectName }}
+                                                </p>
+                                                <p class="text-muted mb-2">
+                                                    <i class="fas fa-dot-circle me-2"></i>{{ project.schemeType }}
                                                 </p>
                                             </div>
-                                            <span class="badge bg-primary-subtle text-primary-emphasis">
-                                                {{ project.budget }}
-                                            </span>
                                         </div>
-                                        <p class="small mb-2 text-body-secondary" style="cursor: pointer;" 
-                                           (click)="selectLocationOnMap(project); $event.stopPropagation()" 
-                                           title="Click to view on map">
-                                            <i class="fa-solid fa-location-dot me-2 text-primary"></i>
-                                            <span class="text-primary text-decoration-underline">{{ project.address }}</span>
-                                        </p>
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <span class="fw-semibold text-secondary">
-                                                <i class="fa-solid fa-phone me-2 text-success"></i>{{
-                                                project.contactPhone }}
-                                            </span>
-                                            <span class="small text-muted">View details</span>
+                                        <div class="d-flex gap-2">
+                                            <button type="button" class="btn btn-sm btn-outline-primary flex-fill"
+                                                (click)="selectLocationOnMap(project); $event.stopPropagation()"
+                                                title="Locate on map">
+                                                <i class="fa-solid fa-map-location-dot me-1"></i>
+                                                Locate on map
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-primary flex-fill"
+                                                (click)="openProjectInNewTab(project); $event.stopPropagation()"
+                                                title="View project details">
+                                                <i class="fa-solid fa-eye me-1"></i>
+                                                View details
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </ng-container>
                             <ng-template #noMatches>
-                                <div class="alert alert-light border text-muted mb-0">
+                                <p class="text-muted">
                                     No projects match “{{ searchTerm }}”.
-                                </div>
+                                </p>
                             </ng-template>
                         </div>
                     </div>
-                    <ng-template #projectDetails>
-                        <div class="card shadow-sm border-0 flex-grow-1 d-flex flex-column project-detail-card">
-                            <div class="card-header bg-body d-flex align-items-center justify-content-between">
-                                <div class="flex-grow-1">
-                                    <div class="d-flex align-items-center gap-2 mb-1">
-                                        <span class="type-icon-badge" 
-                                              [style.background-color]="getTypeColor(selectedProject?.type)"
-                                              [title]="getTypeLabel(selectedProject?.type)">
-                                            {{ getTypeIcon(selectedProject?.type) }}
-                                        </span>
-                                        <h5 class="mb-0">{{ selectedProject?.name }}</h5>
-                                    </div>
-                                    <small class="text-muted">Project detail overview</small>
-                                </div>
-                                <button class="btn btn-sm btn-outline-secondary" (click)="clearSelection()">
-                                    <i class="fa-solid fa-arrow-left-long me-1"></i>
-                                    Back
-                                </button>
-                            </div>
-                            <div class="card-body overflow-auto">
-                                <div class="detail-meta mb-3 d-flex flex-wrap align-items-center gap-2">
-                                    <span class="badge bg-primary-subtle text-primary-emphasis px-3 py-2">
-                                        <i class="fa-solid fa-wallet me-2"></i>{{ selectedProject?.budget }}
-                                    </span>
-                                    <span class="detail-pill text-muted">
-                                        <i class="fa-regular fa-calendar me-2"></i>{{ selectedProject?.startDate }}
-                                    </span>
-                                </div>
-                                <ul class="list-unstyled mb-3 detail-list">
-                                    <li style="cursor: pointer;" 
-                                        (click)="selectLocationOnMap(selectedProject); $event.stopPropagation()" 
-                                        title="Click to view on map">
-                                        <i class="fa-solid fa-location-dot me-2 text-danger"></i>
-                                        <span class="label">Address:</span>
-                                        <span class="text-primary text-decoration-underline">{{ selectedProject?.address }}</span>
-                                    </li>
-                                    <li>
-                                        <i class="fa-solid fa-phone me-2 text-success"></i>
-                                        <span class="label">Site contact:</span>
-                                        {{ selectedProject?.contactPhone }}
-                                    </li>
-                                </ul>
-                                <p class="detail-description mb-4">{{ selectedProject?.description }}</p>
-
-                                <ng-container *ngIf="selectedProject?.siteImages?.length; else noImages">
-                                    <div class="project-gallery mb-4">
-                                        <div class="ratio ratio-16x9 project-gallery-main mb-3">
-                                            <img [src]="selectedProject?.siteImages?.[activeImageIndex]"
-                                                class="w-100 h-100 rounded object-fit-cover" alt="Project site overview" />
-                                        </div>
-                                        <div class="d-flex flex-wrap gap-2">
-                                            <button type="button" class="project-gallery-thumb"
-                                                *ngFor="let image of selectedProject?.siteImages; let idx = index"
-                                                (click)="setActiveImage(idx)" [class.active]="idx === activeImageIndex">
-                                                <img [src]="image" alt="Project view thumbnail"
-                                                    class="w-100 h-100 object-fit-cover rounded" />
-                                            </button>
-                                        </div>
-                                    </div>
-                                </ng-container>
-                                <ng-template #noImages>
-                                    <div class="alert alert-light border text-muted mb-4">
-                                        No site imagery uploaded yet.
-                                    </div>
-                                </ng-template>
-
-                                <div class="detail-documents">
-                                    <h6 class="text-uppercase text-muted small mb-2">Documents</h6>
-                                    <div class="d-flex flex-column gap-2"
-                                        *ngIf="selectedProject?.documents?.length; else noDocs">
-                                        <button type="button" *ngFor="let document of selectedProject?.documents"
-                                            class="btn btn-outline-secondary btn-sm d-flex align-items-center justify-content-between">
-                                            <span class="text-start">{{ document.label }}</span>
-                                            <i class="fa-solid fa-download ms-2"></i>
-                                        </button>
-                                    </div>
-                                    <ng-template #noDocs>
-                                        <div class="alert alert-light border text-muted mb-0">
-                                            No documents available yet.
-                                        </div>
-                                    </ng-template>
-                                </div>
-                            </div>
-                        </div>
-                    </ng-template>
                 </div>
             </div>
             <div class="col-md-9 p-0">
 
                 <div style="position: relative;">
-                    <div class="d-flex gap-2 justify-content-center align-items-center" style="position: absolute; top: 10px; left: 0; right: 0;z-index: 99999;width: fit-content;
-    transform: translate(40%, 40%);">
-                        <button 
-                            *ngFor="let layer of availableLayers()" 
-                            class="btn btn-sm position-relative"
-                            [class.btn-primary]="isLayerActive(layer.name)"
-                            [class.btn-light]="!isLayerActive(layer.name)"
-                            (click)="switchLayer(layer.name)"
+                    <div class="d-flex gap-2 justify-content-center align-items-center px-3 py-2 blurBgLayer" style="position: absolute; top: 10px; left: 0; right: 0;z-index: 99999;width: fit-content;
+    transform: translate(40%, 40%); ">
+                        <button *ngFor="let layer of availableLayers()" class="btn btn-sm position-relative"
+                            [class.text-light-Blue]="isLayerActive(layer.name)"
+                            [class.bg-navbar]="isLayerActive(layer.name)"
+                            [class.text-light-Blue-placeholder]="!isLayerActive(layer.name)" (click)="switchLayer(layer.name)"
                             [title]="layer.label">
                             <i class="fa-solid" [ngClass]="layer.icon"></i> {{ layer.label }}
                         </button>
